@@ -18,9 +18,10 @@ class ContactFactory extends Factory
     {
         return [
             'fullname' => $this->faker->name(),
-            'gendar' => rand(1,2),
+            'gender' => rand(1,2),
             'email' => $this->faker->email,
-            'postcode' => $this->faker->postcode,
+            'postcode' => $this->faker->regexify('[0-9]{3}-[0-9]{4}'),
+            // postcodeをそのまま使用するとハイフンなしになるため、regexifyを使用し、3桁-4桁の文字列を表現
             'address' => $this->faker->streetAddress,
             'building_name' => $this->faker->secondaryAddress,
             'opinion' => $this->faker->realText($maxNBChars = 120, $indexSize = 4),

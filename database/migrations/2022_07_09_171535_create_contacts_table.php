@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             // bigint unsigned Primary_key
             $table->string('fullname', 255);
             // stringメソッドでvarcharカラムを作成
-            $table->tinyIntegar('age');
+            $table->tinyInteger('gender');
             $table->string('email');
             // モデルでemail型のみとするValidation
             $table->char('postcode', 8);

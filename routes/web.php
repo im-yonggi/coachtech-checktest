@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [ContactController::class, 'index']);
 // お問い合わせページ表示
+Route::get('/confirm', [ContactController::class, 'confirm']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 // お問い合わせ情報をpostし、一旦DBには格納せず、内容確認のviewに送る
 Route::post('/send', [ContactController::class, 'send']);
@@ -32,3 +34,4 @@ Route::post('/search', [AdminController::class, 'search']);
 Route::get('/reset', [AdminController::class, 'reset']);
 // /adminにredirect
 Route::post('/delete', [AdminController::class, 'delete']);
+

@@ -106,7 +106,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'ja_JP',
+    // 日本用に設定
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +175,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ValidatorServiceProvider::class,
+        // 自作のServiceProviderを作成・登録
 
     ],
 
