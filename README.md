@@ -37,9 +37,9 @@ https://github.com/im-yonggi/coachtech-checktest.git
 - Laravel Framework 8.83.18
 
 ## テーブル設計
-- 教材のInstruction（下図）を基に設計。
-- 実際のmigration fileの画面キャプチャも併せて添付する。
+- 教材のInstruction（下図）を基に設計。<br>
 ![スクリーンショット 2022-07-15 10 58 27](https://user-images.githubusercontent.com/103875473/179131958-198745ab-cbe5-48eb-969c-bc1933b9465a.png)
+- 実際のmigration fileの画面キャプチャも併せて添付する。
 <img width="542" alt="スクリーンショット 2022-07-15 11 00 38" src="https://user-images.githubusercontent.com/103875473/179131979-302234e9-3de8-4d82-be4c-7635a6f97593.png">
 <img width="672" alt="スクリーンショット 2022-07-15 11 00 51" src="https://user-images.githubusercontent.com/103875473/179131988-f8fcdffb-8527-4ef4-99ef-92a060dd8d87.png">
 
