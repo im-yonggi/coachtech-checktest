@@ -30,7 +30,7 @@ Route::get('/thanks', [ContactController::class, 'thanks']);
 // 以下管理システム用のrooting
 Route::get('/admin', [AdminController::class, 'admin']);
 // 管理者システム表示
-Route::post('/search', [AdminController::class, 'search']);
+Route::get('/search', [AdminController::class, 'search']);
 Route::get('/reset', [AdminController::class, 'reset']);
 // /adminにredirect
 Route::post('/delete', [AdminController::class, 'delete']);

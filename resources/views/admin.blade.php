@@ -145,7 +145,7 @@ td > span{
 <body>
   <h1 class="title">管理システム</h1>
   <div class="search__container">
-    <form action="/search" method="post">
+    <form action="/search" method="get">
       @csrf
       <table>
         <tr class="search__row">
@@ -200,8 +200,9 @@ td > span{
   <div class="pagination__container">
     <p>全{{$items->total()}}件中  {{($items->currentPage() -1) * $items->perPage() + 1}} - 
        {{ (($items->currentPage() -1) * $items->perPage() + 1) + (count($items) -1)  }}件</p>
-    <div>{{$items->links('pagination::bootstrap-4')}}</div>
+    <div>{{$items->appends(request()->query())->links('pagination::bootstrap-4')}}</div>
     <!-- bootstrap-4のCSSの初期表示がうまくいかないため、views/vendor/bootstrap-4.phpに直接styleを記載 -->
+    <!-- appendsの中は,controllerからURL(?pageの直前)に残しておきたい検索条件をパラメーターで引っ張ってくるでも可 -->
 
   </div>
   <div class="list__container">

@@ -86,7 +86,7 @@
 .submit__button{
   width: 15%;
   height: 60px;
-  margin: 20px auto 10px auto;
+  margin: 20px auto 50px auto;
 }
 
 .send__button{
