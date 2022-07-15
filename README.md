@@ -1,64 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# お問い合わせ管理システム
+顧客からのお問い合わせを受け付け、管理者側はお問合せ内容を管理・閲覧・検索できるシステム。
+- お問い合わせページ<br>
+ユーザーが個人情報とお問い合わせ内容を入力し管理者側に送信（送信前に内容確認ページあり）。
+- 管理システムページ<br>
+お問合せ内容を一括管理・閲覧。顧客名・性別・登録日（＝お問合せ日）・メールアドレスで絞り込み検索可能。
+![contact](https://user-images.githubusercontent.com/103875473/179128662-36e36cb7-8cdb-4645-9838-f363250ee871.png)
+![admin](https://user-images.githubusercontent.com/103875473/179128681-2473b0ed-f58a-410b-afcd-eed7b0869421.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 作成目的
+- coachtechでのStandard Termを終え、Advanced Termへ移行するにあたり実力チェックのために、作成したもの。
+- システムそのものの意義としては、顧客からの声を集め、管理者は同内容を一元的に管理し、要望に応えていくための一助としたいもの。
 
-## About Laravel
+## アプリケーションURL
+- 未デプロイの為、本GitHubのURLを下添する。
+https://github.com/im-yonggi/coachtech-checktest.git
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 機能一覧
+- お問合せページ
+	- 郵便番号<br>
+    郵便番号を全角で入力したまま内容確認に遷移しようとすると、住所が自動で半角に変わった状態でエラーを通知。
+    - 住所<br>
+    郵便番号を入力すると、住所が自動入力
+- 内容確認ページ<br>
+	- 修正を選択すると、入力内容が保持されたまま、お問合せページに遷移。
+- 管理システムページ<br>
+	- 検索<br>
+	顧客名・性別・登録日・メールアドレスで絞り込み検索が可能。また検索結果表示後は、検索内容を検索フォームに保持
+	- お問合せ内容一覧<br>
+	Pagination機能を利用。検索機能と同居させるため、検索フォームの送信methodはgetを使用。
+	- お問合せ内容<br>
+	お問合せ内容が長文の場合（MAX120文字）、マウスオーバーすることで、全文表示。
+	- 削除<br>
+	各お問合せ内容右欄にある削除ボタンをクリックで、DBから該当のお問合せ内容を削除
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 使用技術
+- Laravel Framework 8.83.18
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## テーブル設計
+- 教材のInstruction（下図）を基に設計。<br>
+![スクリーンショット 2022-07-15 10 58 27](https://user-images.githubusercontent.com/103875473/179131958-198745ab-cbe5-48eb-969c-bc1933b9465a.png)
+- 実際のmigration fileの画面キャプチャも併せて添付する。
+<img width="542" alt="スクリーンショット 2022-07-15 11 00 38" src="https://user-images.githubusercontent.com/103875473/179131979-302234e9-3de8-4d82-be4c-7635a6f97593.png">
+<img width="672" alt="スクリーンショット 2022-07-15 11 00 51" src="https://user-images.githubusercontent.com/103875473/179131988-f8fcdffb-8527-4ef4-99ef-92a060dd8d87.png">
 
-## Learning Laravel
+## ER図
+- 単一のテーブルのみで設計されているため、ER図は未作成。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ダミーデータ
+- seederを利用し1件、ファクトリを使用し、Fakerでダミーデータを生成するよう設計し、34件追加。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+	
+	
+	
