@@ -43,10 +43,17 @@ class AdminController extends Controller
         {
             $query -> where('email', 'LIKE',"%{$request->email}%");
         }
+        // 検索内容を渡す為、$requestの内容を変数に入れ直す
+
+        $fullname = $request -> fullname;
+        $gender = $request -> gender;
+        $from_date = $request -> from_date;
+        $until_date = $request -> until_date;
+        $email = $request -> email;
 
         $items = $query -> get();
         $items = $query -> Paginate(10);
-        return view('admin',['items'=>$items]);
+        return view('admin',['items'=>$items])->with(compact("fullname", "gender", "from_date", "until_date", "email"));
     }
 
     public function reset()

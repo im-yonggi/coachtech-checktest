@@ -34,6 +34,7 @@ table{
   width: 36px;
   height: 36px;
   vertical-align: middle;
+  accent-color:black;
 }
 
 label{
@@ -148,19 +149,48 @@ td > span{
       @csrf
       <table>
         <tr class="search__row">
+          <!-- 名前フォーム -->
           <th class="search__title">お名前</th>
+          @if(!empty($fullname))
+          <td class="search__content__first-line"><input type="text" name="fullname" class="search__content__box" value="{{$fullname}}"></td>
+          @else
           <td class="search__content__first-line"><input type="text" name="fullname" class="search__content__box"></td>
+          @endif
+
+          <!-- 性別フォーム -->
           <th class="search__title">性別</th>
+          @if(!empty($gender) && $gender == 1)
+          <td class="search__content__first-line"><input type="radio" name="gender" value="" id="button__0" class="search__check-box"><label for="button__0">全て</label><input type="radio" name="gender" class="search__check-box" value="1" id="button__1" checked><label for="button__1">男性</label><input type="radio" name="gender" class="search__check-box" value="2" id="button__2"><label for="button__2">女性</label></td>
+          @elseif(!empty($gender) && $gender == 2)
+          <td class="search__content__first-line"><input type="radio" name="gender" value="" id="button__0" class="search__check-box"><label for="button__0">全て</label><input type="radio" name="gender" class="search__check-box" value="1" id="button__1" ><label for="button__1">男性</label><input type="radio" name="gender" class="search__check-box" value="2" id="button__2" checked><label for="button__2">女性</label></td>
+          @else
           <td class="search__content__first-line"><input type="radio" name="gender" value="" id="button__0" class="search__check-box" checked><label for="button__0">全て</label><input type="radio" name="gender" class="search__check-box" value="1" id="button__1" ><label for="button__1">男性</label><input type="radio" name="gender" class="search__check-box" value="2" id="button__2"><label for="button__2">女性</label></td>
+          @endif
         </tr>
+
+        <!-- 登録日フォーム -->
         <tr class="search__row">
           <th class="search__title">登録日</th>
+          @if(!empty($from_date) && !empty($until_date))
+          <td colspan="3"><input type="date" name="from_date" class="search__content__box" value="{{$from_date}}"><span>〜</span><input type="date" name="until_date" class="search__content__box" value="{{$until_date}}"></td>
+          @elseif(!empty($from_date) && empty($until_date))
+          <td colspan="3"><input type="date" name="from_date" class="search__content__box" value="{{$from_date}}"><span>〜</span><input type="date" name="until_date" class="search__content__box"></td>
+          @elseif(empty($from_date) && !empty($until_date))
+          <td colspan="3"><input type="date" name="from_date" class="search__content__box"><span>〜</span><input type="date" name="until_date" class="search__content__box" value="{{$until_date}}"></td>
+          @else
           <td colspan="3"><input type="date" name="from_date" class="search__content__box"><span>〜</span><input type="date" name="until_date" class="search__content__box"></td>
+          @endif
         </tr>
+
+        <!-- メールアドレスフォーム -->
         <tr class="search__row">
           <th class="search__title">メールアドレス</th>
+          @if(!empty($email))
+          <td class="search__content"><input type="email" name="email" class="search__content__box" value="{{$email}}"></td>
+          @else
           <td class="search__content"><input type="email" name="email" class="search__content__box"></td>
-        </tr>
+          @endif
+        </tr> 
       </table>
       <div class="button"><button class="search__button">検索</button></div>
     </form>
@@ -171,6 +201,8 @@ td > span{
     <p>全{{$items->total()}}件中  {{($items->currentPage() -1) * $items->perPage() + 1}} - 
        {{ (($items->currentPage() -1) * $items->perPage() + 1) + (count($items) -1)  }}件</p>
     <div>{{$items->links('pagination::bootstrap-4')}}</div>
+    <!-- bootstrap-4のCSSの初期表示がうまくいかないため、views/vendor/bootstrap-4.phpに直接styleを記載 -->
+
   </div>
   <div class="list__container">
     <table class="list__table">

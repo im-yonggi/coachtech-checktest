@@ -61,6 +61,7 @@
   width: 36px;
   height: 36px;
   vertical-align: middle;
+  accent-color:black;
 }
 
 .error__message{
