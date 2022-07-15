@@ -31,3 +31,4 @@ https://github.com/im-yonggi/coachtech-checktest.git
 	- 削除
 	
 	
+	
